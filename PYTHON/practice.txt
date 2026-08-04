@@ -60,3 +60,10 @@ def calculate_special_bonus(employees: pd.DataFrame) -> pd.DataFrame:
 def fix_names(users: pd.DataFrame) -> pd.DataFrame:
     users['name']=users['name'].str.capitalize()
     return users.sort_values(by='user_id')
+
+
+***Users with valid emails
+    import pandas as pd
+    def valid_emails(users: pd.DataFrame) -> pd.DataFrame:
+        pattern=r'^[A-Za-z][A-Za-z0-9_.-]*@leetcode.com$'
+        return users[users['mail'].str.match(pattern)]
