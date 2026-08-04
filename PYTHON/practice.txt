@@ -37,3 +37,19 @@ if __name__ == '__main__':
     t = tuple(integer_list)
     print(hash(t))
 
+
+***String length
+    import pandas as pd
+    def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
+        return tweets[tweets['content'].str.len()>15][['tweet_id']]
+
+
+***Calculate Special Bonus
+    import pandas as pd
+
+def calculate_special_bonus(employees: pd.DataFrame) -> pd.DataFrame:
+    employees['bonus']=0
+    employees.loc[
+        (employees['employee_id']%2==1) & (~employees['name'].str.startswith('M')),'bonus']= employees['salary']
+    return employees[['employee_id','bonus']].sort_values(by='employee_id')
+
